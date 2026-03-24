@@ -68,6 +68,63 @@ Custom data/db paths:
 python rag_local.py --data-dir my_docs --db-dir my_rag_db
 ```
 
+Force GPU usage (if your Ollama model supports it):
+
+```powershell
+python rag_local.py --num-gpu 999
+```
+
+CPU-only mode:
+
+```powershell
+python rag_local.py --num-gpu 0
+```
+
+Tune CPU threads:
+
+```powershell
+python rag_local.py --num-thread 8
+```
+
+Low-latency chat mode (faster responses):
+
+```powershell
+python rag_local.py --fast --stream
+```
+
+Or tune latency manually:
+
+```powershell
+python rag_local.py --top-k 2 --max-context-chars 500 --max-tokens 192
+```
+
+Keep model loaded between questions (reduces repeated startup delay):
+
+```powershell
+python rag_local.py --fast --stream --keep-alive 30m
+```
+
+Rebuild embeddings only when your data changes:
+
+```powershell
+python rag_local.py --rebuild --ingest-only
+python rag_local.py --fast
+```
+
+If Ollama embedding hangs on your machine, switch embedding backend:
+
+```powershell
+pip install -r requirements.txt
+python rag_local.py --rebuild --ingest-only --embedding-backend sentence-transformers
+python rag_local.py --fast --embedding-backend sentence-transformers
+```
+
+Quickly stop stuck RAG/Ollama processes:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File .\stop_rag.ps1
+```
+
 ## Scrape public websites into `data/`
 
 You can create local docs from public URLs for your RAG system:

@@ -3,3 +3,4 @@ ollama
 tqdm
 requests
 beautifulsoup4
+sentence-transformers
