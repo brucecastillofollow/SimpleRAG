@@ -1,0 +1,13 @@
+__pycache__/
+*.py[cod]
+
+# Virtual environments
+.venv/
+venv/
+
+# Local RAG artifacts
+rag_db/
+
+# Keep folder, ignore scraped/generated files inside
+data/*
+!data/.gitkeep

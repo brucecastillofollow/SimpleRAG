@@ -1,3 +1,5 @@
 chromadb
 ollama
 tqdm
+requests
+beautifulsoup4

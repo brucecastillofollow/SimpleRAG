@@ -67,3 +67,36 @@ Custom data/db paths:
 ```powershell
 python rag_local.py --data-dir my_docs --db-dir my_rag_db
 ```
+
+## Scrape public websites into `data/`
+
+You can create local docs from public URLs for your RAG system:
+
+```powershell
+python scrape_to_data.py --url https://example.com
+```
+
+Multiple URLs:
+
+```powershell
+python scrape_to_data.py --url https://example.com --url https://example.org/docs
+```
+
+From a file (one URL per line):
+
+```powershell
+python scrape_to_data.py --url-file urls.txt
+```
+
+Custom output folder:
+
+```powershell
+python scrape_to_data.py --url-file urls.txt --output-dir data
+```
+
+After scraping, run ingestion/chat again:
+
+```powershell
+python rag_local.py --ingest-only
+python rag_local.py
+```
